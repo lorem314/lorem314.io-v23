@@ -1,26 +1,84 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "../styles/theme/light.css";
+@import "../styles/theme/dark.css";
+/* @import "../styles/ui.css"; */
+@import "../styles/ui/toc.css";
+@import "../styles//ui/tooltip.css";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  --default-transition-duration: 150ms;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary-color: var(--primary-color);
+  --color-link-color: var(--link-color);
+
+  --color-app-color: var(--app-color);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-content-bg: var(--content-bg);
+  --color-bg-0: var(--bg-0);
+  --color-bg-1: var(--bg-1);
+
+  --color-misc-button-icon-color: var(--misc-button-icon-color);
+  --color-misc-button-bg: var(--misc-button-bg);
+  --color-misc-button-hover-bg: var(--misc-button-hover-bg);
+  --color-misc-button-active-bg: var(--misc-button-active-bg);
+  --color-misc-button-active-color: var(--misc-button-active-color);
+
+  --color-label-color: var(--label-color);
+  --color-label-border-color: var(--label-border-color);
+
+  --color-tooltip-color: var(--tooltip-color);
+  --color-tooltip-bg: var(--tooltip-bg);
+  --color-tooltip-border-color: var(--tooltip-border-color);
 }
 
-@media (prefers-color-scheme: dark) {
+:root {
+  --foreground: var(--app-color);
+  /* --background: ; */
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
-body {
+/* body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply relative h-full w-full overflow-auto text-base;
+  }
+
+  body {
+    @apply relative h-full w-full overflow-auto antialiased;
+  }
+
+  svg {
+    display: block;
+    box-sizing: content-box;
+  }
+
+  a {
+    @apply underline-offset-4 hover:underline;
+  }
 }
